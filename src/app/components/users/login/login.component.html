@@ -1,0 +1,26 @@
+<div class="row d-flex justify-content-center my-5">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Login</h5>
+                <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+                    <div class="mb3">
+                        <label class="form-label">Email</label>
+                        <input type="text" class="form-control" formControlName="email">
+                        <div class="alert alert-danger mt-2" [hidden]="email.valid || email.pristine">
+                            Email is required
+                        </div>
+                    </div>
+                    <div class="mb3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" formControlName="password">
+                        <div class="alert alert-danger mt-2" [hidden]="password.valid || password.pristine">
+                            Password is required
+                        </div>
+                    </div>
+                    <input type="submit" value="Login" class="btn btn-primary my-3" [disabled]="formulario.invalid">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

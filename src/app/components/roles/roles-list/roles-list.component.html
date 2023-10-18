@@ -1,0 +1,39 @@
+<div class="row d-flex justify-content-center my-5">
+    <div class="col-md-8">    
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Roles List</h5>
+                <table class="table table-success table-striped-columns table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="arrRols.length>0; else elseBlock">
+                        <tr *ngFor="let rol of arrRols">
+                            <td>{{ rol._id }}</td>
+                            <td>{{ rol.name | uppercase }}</td>
+                            <td>
+                                <button class="btn btn-info" [routerLink]="['/roles',rol._id]">Detail</button>
+                                <button class="btn btn-warning ms-2" [routerLink]="['/roles/edit',rol._id]">Edit</button>
+                                <button class="btn btn-danger ms-2" (click)="onClickBorrar(rol._id)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #elseBlock>
+
+    <tbody>
+        <tr>
+            <td colspan="4" [ngStyle]="{'color': 'red'}">There is no data</td>
+        </tr>
+    </tbody>
+    
+</ng-template>
